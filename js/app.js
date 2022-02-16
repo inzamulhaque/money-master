@@ -2,6 +2,7 @@
 function validation(inputValue) {
     // isNaN validation for e and negative value validation
     if (isNaN(inputValue) || inputValue < 0) {
+        alert(inputValue);
         return "error";
     }
     return inputValue;
@@ -11,6 +12,11 @@ function validation(inputValue) {
 function getValue(id) {
     const inputField = document.getElementById(id);
     const inputValueString = inputField.value;
+
+    // validation for null value
+    if (inputValueString == "") {
+        return 0;
+    }
     const inputValue = parseFloat(inputValueString);
 
     // for income field validation
@@ -26,6 +32,13 @@ function getValue(id) {
 function incomeIsGreaterThan(income, exp) {
     if (income < exp) {
         return false;
+    }
+}
+
+// for clearing input value
+function clearInputValue() {
+    for (const id of arguments) {
+        document.getElementById(id).value = "";
     }
 }
 
@@ -45,7 +58,10 @@ function totalExp() {
     const checkIncome = incomeIsGreaterThan(incomeValue, totalExpenses);
 
     if (checkIncome == false) {
-        return alert("income not less than expenses.");
+        clearInputValue("income", "foodExp", "rentExp", "clotheExp");
+        return document.getElementById("incomeError").style.display = "block";
+    } else {
+        document.getElementById("incomeError").style.display = "none";
     }
 
     const calcTotalBalance = incomeValue - totalExpenses;
