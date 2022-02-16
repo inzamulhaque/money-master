@@ -12,11 +12,6 @@ function validation(inputValue) {
 function getValue(id) {
     const inputField = document.getElementById(id);
     const inputValueString = inputField.value;
-
-    // validation for null value
-    if (inputValueString == "") {
-        return 0;
-    }
     const inputValue = parseFloat(inputValueString);
 
     // for income field validation
@@ -24,8 +19,9 @@ function getValue(id) {
         alert("please enter your valid income");
         return "error";
     }
+    const validationValue = validation(inputValue);
 
-    return validation(inputValue);
+    return validationValue;
 }
 
 // check income is greater than or not
@@ -69,6 +65,30 @@ function totalExp() {
     showingBalance("totalExpenses", totalExpenses);
     showingBalance("totalBalance", calcTotalBalance);
 }
+
+document.getElementById("saveMoney").addEventListener("click", function () {
+    const incomeValue = getValue("income");
+    const savePercentage = getValue("savePercentage");
+
+    // check error
+    if (incomeValue == "error" || savePercentage == "error") {
+        return alert("please enter valid income amount and saving percentage!");
+    }
+    const saveAmount = (incomeValue * savePercentage) / 100;
+    // alert("saveAmount");
+    const restBalanceString = document.getElementById("totalBalance").innerText;
+    const restBalance = parseFloat(restBalanceString);
+    const checkRestBalance = incomeIsGreaterThan(restBalance, saveAmount);
+
+    if (checkRestBalance == false) {
+        return document.getElementById("savingError").style.display = "block";
+    } else {
+        document.getElementById("savingError").style.display = "none";
+    }
+    const remainingBalance = restBalance - saveAmount;
+    showingBalance("savingAmount", saveAmount);
+    showingBalance("restBalance", remainingBalance);
+});
 
 // for showing balance and expenses
 function showingBalance(id, amount) {
