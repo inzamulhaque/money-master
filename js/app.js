@@ -77,7 +77,6 @@ document.getElementById("saveMoney").addEventListener("click", function () {
         return alert("please enter valid income amount and saving percentage!");
     }
     const saveAmount = (incomeValue * savePercentage) / 100;
-    // alert("saveAmount");
     const restBalanceString = document.getElementById("totalBalance").innerText;
     const restBalance = parseFloat(restBalanceString);
     const checkRestBalance = incomeIsGreaterThan(restBalance, saveAmount);
