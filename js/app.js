@@ -66,6 +66,7 @@ function totalExp() {
     showingBalance("totalBalance", calcTotalBalance);
 }
 
+// add saving functionality
 document.getElementById("saveMoney").addEventListener("click", function () {
     const incomeValue = getValue("income");
     const savePercentage = getValue("savePercentage");
