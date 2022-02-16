@@ -2,7 +2,6 @@
 function validation(inputValue) {
     // isNaN validation for e and negative value validation
     if (isNaN(inputValue) || inputValue < 0) {
-        alert(inputValue);
         return "error";
     }
     return inputValue;
@@ -47,7 +46,7 @@ function totalExp() {
 
     // error check
     if (incomeValue == "error" || foodExpValue == "error" || rentExpValue == "error" || clotheExpValue == "error") {
-        return alert("please enter valid value!");
+        return alert("please enter valid value! value must be nember and zero or positive number");
     }
 
     const totalExpenses = foodExpValue + rentExpValue + clotheExpValue;
@@ -55,6 +54,8 @@ function totalExp() {
 
     if (checkIncome == false) {
         clearInputValue("income", "foodExp", "rentExp", "clotheExp");
+        showingBalance("totalExpenses", 0);
+        showingBalance("totalBalance", 0);
         return document.getElementById("incomeError").style.display = "block";
     } else {
         document.getElementById("incomeError").style.display = "none";
@@ -82,6 +83,8 @@ document.getElementById("saveMoney").addEventListener("click", function () {
     const checkRestBalance = incomeIsGreaterThan(restBalance, saveAmount);
 
     if (checkRestBalance == false) {
+        showingBalance("savingAmount", 0);
+        showingBalance("restBalance", 0);
         return document.getElementById("savingError").style.display = "block";
     } else {
         document.getElementById("savingError").style.display = "none";
