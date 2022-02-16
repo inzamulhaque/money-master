@@ -40,3 +40,11 @@ header h1 {
 #incomeError, #savingError{
     display: none;
 }
+
+/* media querie */
+
+@media (max-width: 688px) {
+    .momey-img {
+        height: 80vh;
+    }
+}
