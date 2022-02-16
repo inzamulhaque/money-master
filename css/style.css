@@ -1,4 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500;700&display=swap');
 
-/* font-family: 'Montserrat', sans-serif;
-font-family: 'Roboto', sans-serif; */
+/* common style */
+h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+/* header part style */
+header h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: #31A5AC;
+}
+
+/* main part style */
+.momey-img {
+    height: 100%;
+}
+
+.form-container {
+    background: #F8F8F8;
+    padding: 35px;
+} 
+
+.inputTitle {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+}
